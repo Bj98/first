@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 
@@ -32,6 +33,11 @@ public class BookController {
     public void deleteBook(@PathVariable("id") Long id){
         bookService.delete(id);
 
+    }
+
+    @GetMapping("/one/{id}")
+    public Optional<Book> displayOne(@PathVariable("id") Long id){
+        return bookService.findOne(id);
     }
 
 
